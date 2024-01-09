@@ -4,7 +4,7 @@ const HomePage = () => {
   return (
     <Wrap>
       <MainTitle>Just Contacts</MainTitle>
-      <Slogan>Your Onw Storage</Slogan>
+      <Slogan>Your Own Storage</Slogan>
     </Wrap>
   );
 };
