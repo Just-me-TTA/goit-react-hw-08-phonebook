@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 
 export const CounterMessage = styled.p`
-  color: #3dffc2;
-  text-shadow: 0 0 10px #ffffff;
-  margin-top: 28px;
+  color: var(--accent-color-2);
+  text-shadow: 0 0 10px var(--basic-white);
+  text-align: center;
 `;
 
 export const List = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 144px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+`;
+
+export const Container = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

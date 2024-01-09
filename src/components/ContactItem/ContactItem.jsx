@@ -1,8 +1,17 @@
 import { useDispatch } from 'react-redux';
-import { BinIcon, DelButton, Item, Letter } from './ContactItem.styled';
-import { deleteContact } from '../../redux/operations';
+import {
+  BinIcon,
+  Button,
+  ContactInfo,
+  EditIcon,
+  InfoWrap,
+  Item,
+  Letter,
+} from './ContactItem.styled';
+import { deleteContact } from '../../redux/contacts/operations';
+import { setContactToEditAction } from '../../redux/contacts/contactEditSlice';
 
-export const ContactItem = ({ contact }) => {
+export const ContactItem = ({ contact, openModal, handleEditing }) => {
   const dispatch = useDispatch();
 
   const removeContact = e => {
@@ -12,11 +21,35 @@ export const ContactItem = ({ contact }) => {
 
   return (
     <Item>
-      <Letter>{contact.name[0]}</Letter>
-      {contact.name}: {contact.phone}
-      <DelButton type="button" id={contact.id} onClick={removeContact}>
-        <BinIcon />
-      </DelButton>
+      <InfoWrap>
+        <Letter>{contact.name[0].toUpperCase()}</Letter>
+        <ContactInfo>
+          <span>{contact.name}: </span>
+          <span>{contact.number}</span>
+        </ContactInfo>
+      </InfoWrap>
+      <div>
+        <Button
+          type="button"
+          aria-label="edit the contact"
+          id={contact.id}
+          onClick={() => {
+            handleEditing();
+            openModal();
+            dispatch(setContactToEditAction(contact));
+          }}
+        >
+          <EditIcon />
+        </Button>
+        <Button
+          type="button"
+          aria-label="remove the contact"
+          id={contact.id}
+          onClick={removeContact}
+        >
+          <BinIcon />
+        </Button>
+      </div>
     </Item>
   );
 };

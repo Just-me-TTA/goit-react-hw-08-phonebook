@@ -1,8 +1,7 @@
-import { Title } from 'components/App.styled';
-import { FilterField } from './Filter.styled';
+import { FilterField, Wrapper } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateFilterAction } from '../../redux/filterSlice';
-import { selectFilter } from '../../redux/selectors';
+import { updateFilterAction } from '../../redux/contacts/filterSlice';
+import { selectFilter } from '../../redux/contacts/selectors';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -13,9 +12,13 @@ export const Filter = () => {
   };
 
   return (
-    <div>
-      <Title>Find contacts by name</Title>
-      <FilterField type="text" value={filter} onChange={handleFilter} />
-    </div>
+    <Wrapper>
+      <FilterField
+        type="text"
+        value={filter}
+        onChange={handleFilter}
+        placeholder="filter by name"
+      />
+    </Wrapper>
   );
 };

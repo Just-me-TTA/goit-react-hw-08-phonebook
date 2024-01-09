@@ -4,13 +4,13 @@ import {
   selectContacts,
   selectError,
   selectFilteredContacts,
-} from '../../redux/selectors';
+} from '../../redux/contacts/selectors';
 import { useEffect } from 'react';
-import { fetchContacts } from '../../redux/operations';
+import { fetchContacts } from '../../redux/contacts/operations';
 import { Error } from 'components/Error/Error';
-import { CounterMessage, List } from './ContactList.styled';
+import { Container, CounterMessage, List } from './ContactList.styled';
 
-export const ContactList = () => {
+export const ContactList = ({ openModal, handleEditing }) => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const filteredContacts = useSelector(selectFilteredContacts);
@@ -21,11 +21,16 @@ export const ContactList = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <Container>
       {error && <Error />}
       <List>
         {filteredContacts.map(contact => (
-          <ContactItem contact={contact} key={contact.id} />
+          <ContactItem
+            key={contact.id}
+            contact={contact}
+            openModal={openModal}
+            handleEditing={handleEditing}
+          />
         ))}
       </List>
       {!error && (
@@ -34,6 +39,6 @@ export const ContactList = () => {
           {filteredContacts.length} contacts.
         </CounterMessage>
       )}
-    </>
+    </Container>
   );
 };
