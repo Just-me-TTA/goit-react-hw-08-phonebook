@@ -11,11 +11,17 @@ const contactsInitialState = {
   items: [],
   isLoading: false,
   error: null,
+  contactToEdit: null,
 };
 
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
+  reducers: {
+    setContactToEditAction(state, action) {
+      state.contactToEdit = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.fulfilled, (state, action) => {
@@ -52,6 +58,10 @@ const contactsSlice = createSlice({
   },
 });
 
-export const { addContactAction, removeContactAction, editContactAction } =
-  contactsSlice.actions;
+export const {
+  addContactAction,
+  removeContactAction,
+  editContactAction,
+  setContactToEditAction,
+} = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

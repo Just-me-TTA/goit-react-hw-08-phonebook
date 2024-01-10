@@ -35,7 +35,7 @@ export const ContactList = ({ openModal, handleEditing }) => {
       </List>
       {!error && (
         <CounterMessage>
-          You have {contacts.length} contacts. You filtered{' '}
+          You have {contacts.length} contacts. You have filtered{' '}
           {filteredContacts.length} contacts.
         </CounterMessage>
       )}

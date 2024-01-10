@@ -9,7 +9,7 @@ import {
   Letter,
 } from './ContactItem.styled';
 import { deleteContact } from '../../redux/contacts/operations';
-import { setContactToEditAction } from '../../redux/contacts/contactEditSlice';
+import { setContactToEditAction } from '../../redux/contacts/contactsSlice';
 
 export const ContactItem = ({ contact, openModal, handleEditing }) => {
   const dispatch = useDispatch();
